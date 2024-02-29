@@ -52,5 +52,9 @@ public class Main {
         System.out.println("Lista de actores y actrices más jóvenes en ganar un Oscar:");
         Utilidades.actoresMasJovenesEnGanarUnOscar(peliculasOscarizadas).forEach(System.out::println);
 
+
+        System.out.println("Mostrando actores de archivo JSON");
+        Utilidades.leerActoresJson(file).forEach(System.out::println);
+
     }
 }

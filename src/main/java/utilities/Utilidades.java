@@ -1,5 +1,6 @@
 package utilities;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import entities.Actor;
@@ -109,8 +110,21 @@ public class Utilidades {
                 ).toList().get(0);
 
         return List.of("Actor más joven: " + actorMasJoven, "Actriz más joven:" + actrizMasJoven);
-
-
     }
+
+
+public static List<Actor> leerActoresJson(Path rutaJson){
+    List<Actor> actores = new ArrayList<>();
+
+    try{
+        ObjectMapper objectMapper = new ObjectMapper();
+        actores = objectMapper.readValue(rutaJson.toFile(), new TypeReference<List<Actor>>(){});
+
+        return actores;
+    }catch(IOException e){
+        e.printStackTrace(System.out);
+    }
+    return actores;
+}
 
 }
